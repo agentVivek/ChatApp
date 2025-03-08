@@ -1,21 +1,30 @@
-const Message = () => {
+import { useContext } from "react";
+import { authContext } from "../../context/authContext";
+import { conversationContext } from "../../context/conversationContext";
+import formatDate from "../../utils/formatDate";
+
+const Message = ({message}) => {
+    const {authUser} = useContext(authContext);
+    const {selectedConversation} = useContext(conversationContext);
+    const mine = authUser._id === message.senderId;
+    const profilePic = mine ? authUser.profilePic : selectedConversation?.profilePic;
+    const chatClassName = mine ? 'chat-end' : 'chat-start';
+    const name = mine ? authUser.fullName : selectedConversation?.fullName;
+    const formattedTime = formatDate(message.createdAt);
+    const bgColor = mine ? 'bg-blue-500' : "";
     return (
-        <div className="chat chat-start">
+        <div className={`chat ${chatClassName}`}>
         <div className="chat-image avatar">
         <div className="w-10 rounded-full">
             <img
-            alt="Tailwind CSS chat bubble component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            alt="chat bubble component"
+            src={profilePic}/>
         </div>
         </div>
-        <div className="chat-header">
-        Obi-Wan Kenobi
-        <time className="text-xs opacity-50">12:45</time>
-        </div>
-        <div className="chat-bubble">You were the Chosen One!</div>
-        {/* <div className="chat-footer opacity-50">Delivered</div> */}
+        <div className={`chat-bubble ${bgColor}`}>{message.message}</div>
+        <time className="text-xs opacity-70 text-cyan-200">{formattedTime}</time>
         </div> 
     )
-}
+} 
 
 export default Message;

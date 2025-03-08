@@ -1,11 +1,18 @@
-const Conversation = () => {
+import { useContext } from "react";
+import { conversationContext } from "../../context/conversationContext";
+
+const Conversation = ({conversation, emoji, lastIdx}) => {
+	const {setSelectedConversation, selectedConversation} = useContext(conversationContext);
+	const isSelected = conversation._id === selectedConversation?._id;
 	return (
 		<>
-			<div className='flex gap-3 items-center hover:bg-sky-500 hover:bg-opacity-70 rounded-lg p-3 cursor-pointer transition duration-200 ease-in-out'>
+			<div className={`flex gap-3 items-center hover:bg-sky-500 hover:bg-opacity-70 rounded-lg p-3 cursor-pointer transition duration-200 ease-in-out
+			${isSelected ? "bg-sky-500" : " "} `}
+			onClick={()=>{setSelectedConversation(conversation)}} >
 				<div className='avatar online'>
 					<div className='w-12 rounded-full'>
 						<img
-							src='https://cdn0.iconfinder.com/data/icons/communication-line-10/24/account_profile_user_contact_person_avatar_placeholder-512.png'
+							src={conversation.profilePic}
 							alt='user avatar'
 						/>
 					</div>
@@ -13,13 +20,12 @@ const Conversation = () => {
 
 				<div className='flex flex-col flex-1'>
 					<div className='flex justify-between items-center'>
-						<p className='font-semibold text-gray-100'>John Doe</p>
-						<span className='text-xl'>🎃</span>
+						<p className='font-semibold text-gray-100'>{conversation.fullName}</p>
+						<span className='text-xl'>{emoji}</span>
 					</div>
 				</div>
-			</div>
-
-			<div className='divider my-1' />
+			</div> 
+			{lastIdx ? null : <div className='divider my-1' />}
 		</>
 	);
 };

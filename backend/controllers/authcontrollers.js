@@ -1,6 +1,6 @@
 import User from "../models/usermodel.js";
 import bcrypt from "bcryptjs";
-import generateJWTAndSetCokkie from "../utils/jwt.js";
+import generateJWTAndSetCookie from "../utils/jwt.js";
  
 const signup = async (req, res) => {
     try{
@@ -21,7 +21,7 @@ const signup = async (req, res) => {
             if(err){
                 console.log("Error Hashing Password ", err);
             } else{
-                const newUser = await new User ({
+                const newUser = new User ({
                 fullName, 
                 username,
                 password: hashedPassword, 
@@ -30,7 +30,7 @@ const signup = async (req, res) => {
                 });
                 if(newUser){
                     await newUser.save();
-                    generateJWTAndSetCokkie(newUser._id, res);
+                    generateJWTAndSetCookie(newUser._id, res);
                     return res.status(201).json({
                         _id: newUser._id,
                         fullName: newUser.fullName,
@@ -56,7 +56,7 @@ const login = async (req, res) => {
         if(!user || !isPasswordCorrect){
             res.status(400).json({error: "Invalid username or password"});
         } else {
-            generateJWTAndSetCokkie(user.ID, res); 
+            generateJWTAndSetCookie(user._id, res); 
             return res.status(201).json({
                 _id: user._id,
                 fullName: user.fullName,
