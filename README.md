@@ -79,8 +79,8 @@ ChatApp/
 | POST   | /api/auth/signup | Register a new user |
 | POST   | /api/auth/login  | Authenticate user   |
 | POST   | /api/auth/logout  | Logout user   |
-| GET    | /api/messages/send/:id | Send a new message |
-| POST   | /api/messages/:id | Fetch a new message |
+| POST    | /api/messages/send/:id | Send a new message |
+| GET  | /api/messages/:id | Fetch messages |
 | GET    | /api/users | Get users |
 
 ## 🎯 Future Enhancements
