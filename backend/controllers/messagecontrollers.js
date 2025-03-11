@@ -1,6 +1,8 @@
 import { get } from "mongoose";
 import Conversation from "../models/conversationmodel.js";
 import Message from "../models/messagemodel.js";
+import { getReceiverSocketId } from "../socket/socket.js";
+import { io } from "../socket/socket.js"
 
 const sendMessage = async (req, res) => {
     try{
@@ -26,6 +28,12 @@ const sendMessage = async (req, res) => {
         // await newMessage.save();
         // await conversation.save();
         await Promise.all([newMessage.save(), conversation.save()]); //handling multiple asynchronous operations simultaneously
+
+        const receiverSocketId = getReceiverSocketId(receiverId);
+        if(receiverSocketId){
+            io.to(receiverSocketId).emit("newMessage", newMessage);
+        }
+
         return res.status(201).json(newMessage); 
     } catch(err) {
         console.log("Error in MessageController", err);

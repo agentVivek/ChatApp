@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 const conversationContext = createContext();
 
-function ConversationProvider({children}){
+function ConversationProvider({children}){ 
     const [conversations, setConversations] = useState([]);
     const [selectedConversation, setSelectedConversation] = useState(null);
     const [messages, setMessages] = useState([]);
