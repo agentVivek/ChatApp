@@ -6,7 +6,7 @@ import authroutes from "./routes/authroutes.js";
 import messageroutes from "./routes/messageroutes.js";
 import userroutes from "./routes/userroutes.js";
 
-import connectToMongoDB from "./database/connectToMongodb.js";
+import connectToMongoDB from "./database/connectToMongoDB.js";
 import cookieParser from "cookie-parser";
 import {app, server} from "./socket/socket.js" ;
 
