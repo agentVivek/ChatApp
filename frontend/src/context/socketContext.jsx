@@ -17,9 +17,7 @@ const SocketProvider = ({children}) =>{
                     userId: authUser._id
                 }
             });
-            socket.on("connect", ()=>{
-                setSocket(socket);
-            })  
+            setSocket(socket); 
             socket.on("getOnlineUsers", (onlineUsers)=>{ 
                 setOnlineUsers(onlineUsers);
             })

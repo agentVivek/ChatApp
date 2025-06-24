@@ -12,9 +12,20 @@ const signup = async (req, res) => {
         if(user) {
             return res.status(400).json({error: "User already exist"});
         }
-        const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
-        const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
-        
+        const getProfilePic = username =>
+        `https://ui-avatars.com/api/` +
+        `?name=${encodeURIComponent(username)}` +
+        `&size=200` +
+        `&background=random` +
+        `&color=ffffff` +
+        `&bold=true` +
+        `&font-size=0.5` +
+        `&rounded=true` +
+        `&format=png`;
+
+        // usage
+        const boyProfilePic  = getProfilePic(username);
+        const girlProfilePic = getProfilePic(username);
         //Password Hash
         const saltRounds = 10;
         bcrypt.hash(password, saltRounds, async (err, hashedPassword) => {
