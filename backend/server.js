@@ -11,7 +11,7 @@ import cookieParser from "cookie-parser";
 import {app, server} from "./socket/socket.js" ;
 
 dotenv.config();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const __dirname = path.resolve();
 
 app.use(express.json()); 
