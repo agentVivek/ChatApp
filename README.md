@@ -8,8 +8,6 @@ A real-time chat application built with **React, Node.js, Express, MongoDB, and 
 - **Online Users Tracking**: View currently active users.
 - **Search Functionality**: Find users and conversations easily.
 - **Secure Communication**: Data is securely stored in **MongoDB**.
-- **Responsive UI**: Optimized for both mobile and desktop.
-
 ## 🛠 Tech Stack
 ### **Frontend**
 - React.js (with Context API for state management)
@@ -20,48 +18,6 @@ A real-time chat application built with **React, Node.js, Express, MongoDB, and 
 - MongoDB (Mongoose ORM)
 - Socket.io (for real-time communication)
 - JSON Web Token (JWT) for authentication
-
-## 📦 Installation & Setup
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/ChatApp.git
-   cd ChatApp
-   ```
-
-2. **Install dependencies**
-   ```bash
-   # Install frontend dependencies
-   cd frontend
-   npm install
-   
-   # Install backend dependencies
-   cd ../backend
-   npm install
-   ```
-
-3. **Set up environment variables**
-   - Create a `.env` file in the backend directory and add:
-     ```env
-     MONGO_URI=your_mongodb_connection_string
-     JWT_SECRET=your_secret_key
-     ```
-
-4. **Start the backend server**
-   ```bash
-   cd backend
-   npm start
-   ```
-
-5. **Start the frontend**
-   ```bash
-   cd frontend
-   npm start
-   ```
-
-6. **Open the app in the browser**
-   ```
-   http://localhost:5000
-   ```
 
 ## 📌 Project Structure
 ```
