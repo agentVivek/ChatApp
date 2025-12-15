@@ -34,7 +34,7 @@ const SocketProvider = ({children}) =>{
     }, [authUser]);
 
     return <socketContext.Provider value={{socket, setSocket, onlineUsers, setOnlineUsers}} >
-        {children};
+        {children}
     </socketContext.Provider>
 }
 

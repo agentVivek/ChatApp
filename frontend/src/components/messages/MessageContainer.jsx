@@ -3,32 +3,40 @@ import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 import { conversationContext } from "../../context/conversationContext";
 import { authContext } from "../../context/authContext";
+import { TiArrowBack } from "react-icons/ti";
 
 const MessageContainer = () => {
-	const {selectedConversation} = useContext(conversationContext);
-	if(!selectedConversation) {return(
-		<NoChatSelected />
-	)
-	} else {
+	const { selectedConversation, setSelectedConversation } = useContext(conversationContext);
+
+	// If no chat is selected, show the placeholder (Desktop only, as Mobile hides this container via Home.jsx)
+	if (!selectedConversation) {
+		return <NoChatSelected />;
+	}
+
 	return (
-	
-		<div className="h-screen w-full md:min-w-[450px] flex flex-col border bg-transparent rounded-lg shadow-md ">
+		<div className="flex flex-col h-full w-full border-l border-slate-500">
 			{/* Header */}
-			<div className="bg-gray-700 text-white px-4 py-3 sticky top-0 z-10">
-				<span className="text-gray-300">To:</span>{" "}
-				<span className="font-bold text-white">{selectedConversation.fullName}</span>
+			<div className="bg-slate-500 px-4 py-2 mb-2 flex items-center gap-2">
+				{/* Back Button: Visible ONLY on mobile (md:hidden) */}
+				<button 
+					className='md:hidden text-3xl text-white cursor-pointer mr-2' 
+					onClick={() => setSelectedConversation(null)}
+				>
+					<TiArrowBack />
+				</button>
+
+				<div className="avatar placeholder">
+					<div className="bg-neutral text-neutral-content rounded-full w-8">
+						<img src={selectedConversation.profilePic} alt="user avatar" />
+					</div>
+				</div>
+				<span className="text-gray-900 font-bold ml-2">{selectedConversation.fullName}</span>
 			</div>
 
-			{/* Messages Section */}
-				<Messages />
-				
-			{/* Input Section */}
-			<div className="p-3 border-t border-gray-600">
-				<MessageInput />
-			</div>
+			<Messages />
+			<MessageInput />
 		</div>
 	);
-	}
 };
 
 export default MessageContainer;

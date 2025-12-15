@@ -4,7 +4,7 @@ import SearchInput from "./SearchInput";
 
 const Sidebar = () => {
 	return (
-		<div className='w-sm h-screen border-r border-slate-500 p-4 flex flex-col'>
+		<div className='border-r border-slate-500 p-4 flex flex-col h-full w-full'>
 			<SearchInput />
 			<div className='divider px-3'></div>
 			<Conversations />
@@ -12,7 +12,4 @@ const Sidebar = () => {
 		</div>
 	);
 };
-export default Sidebar; 
- 
-
- 
+export default Sidebar;

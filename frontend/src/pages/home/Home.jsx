@@ -1,18 +1,39 @@
+import { useContext } from "react";
 import MessageContainer from "../../components/messages/MessageContainer";
 import Sidebar from "../../components/sidebar/Sidebar";
-import ConversationProvider from "../../context/conversationContext";
+import ConversationProvider, { conversationContext } from "../../context/conversationContext";
 import SocketProvider from "../../context/socketContext";
 
 const Home = () => {
-	return (
-		<div className='flex w-full bg-transparent sm:h-[450px] md:h-[550px] rounded-lg backdrop-filter bg-opacity-0'>
-			<ConversationProvider>
-				<SocketProvider>
-					<Sidebar />
-					<MessageContainer />
-				</SocketProvider>
-			</ConversationProvider>
-		</div>
-	); 
+    return (
+        <ConversationProvider>
+            <SocketProvider>
+                <HomeLayout />
+            </SocketProvider>
+        </ConversationProvider>
+    );
 };
-export default Home;  
+
+const HomeLayout = () => {
+    const { selectedConversation } = useContext(conversationContext);
+
+    return (
+        <div className='flex h-full w-full'>
+            <div className={`
+                ${selectedConversation ? "hidden md:flex" : "flex"} 
+                flex-col w-full md:w-[300px]
+            `}>
+                <Sidebar />
+            </div>
+            <div className={`
+                ${!selectedConversation ? "hidden md:flex" : "flex"} 
+				w-full
+            `}>
+                <MessageContainer />
+            </div>
+
+        </div>
+    );
+};
+
+export default Home;

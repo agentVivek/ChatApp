@@ -19,7 +19,6 @@ function App() {
         <Route path="/login" element={authUser ? <Navigate to='/' /> : <Login />} />
         <Route path="/signup" element={authUser ? <Navigate to='/' /> : <SignUp />} />
       </Routes>
-      
     </div>
   )
 }
