@@ -1,4 +1,4 @@
-import express from "express";
+import express from "express"; 
 import dotenv from "dotenv"; 
 import path from "path";
 
@@ -26,7 +26,15 @@ app.get("*", (req, res)=>{
     res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
 
-server.listen(port, ()=>{
-    console.log(`Server running on port: ${port}`);
-    connectToMongoDB();
-})
+const startServer = async () => {
+    try {
+        await connectToMongoDB();
+
+        server.listen(port, () => {
+            console.log(`Server running on port: ${port}`);
+        });
+    } catch (error) {
+        process.exit(1);
+    }
+};
+startServer();
