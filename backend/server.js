@@ -29,7 +29,6 @@ app.get("*", (req, res)=>{
 const startServer = async () => {
     try {
         await connectToMongoDB();
-
         server.listen(port, () => {
             console.log(`Server running on port: ${port}`);
         });

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import toast from 'react-hot-toast'
 import { conversationContext } from '../context/conversationContext'
 
