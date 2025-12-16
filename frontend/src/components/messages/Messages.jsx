@@ -20,7 +20,7 @@ const Messages = () => {
 			{messages?.length > 0 ? (
 				messages.map((message, idx) => <Message key={idx} message={message} />)
 			) : (
-				<p className="text-center text-gray-500">No messages yet</p>
+				<p className="text-center text-gray-600">No messages yet</p>
 			)}
 			 <div ref={messagesEndRef} />
 		</div>

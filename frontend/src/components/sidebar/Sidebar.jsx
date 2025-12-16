@@ -6,10 +6,12 @@ const Sidebar = () => {
 	return (
 		<div className='border-r border-slate-500 p-4 flex flex-col h-full w-full'>
 			<SearchInput />
-			<div className='divider px-3'></div>
+			{/* <div className='divider m-1 '></div> */}
+			<hr className="mt-4 border border-gray-700"/>
 			<Conversations />
 			<LogoutButton />
 		</div>
+		
 	);
 };
 export default Sidebar;

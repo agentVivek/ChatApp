@@ -21,7 +21,7 @@ const Conversations = () => {
 		})
 	}, [conversations]);
 	return (
-		<div className='py-2 flex flex-col space-y-2 max-h-144 overflow-y-auto scrollbar-hidden'>.
+		<div className='flex flex-col max-h-144 overflow-y-auto scrollbar-hidden '>.
 			{filteredConversations.map((conversation, idx) => (
 				<Conversation 
 					key={conversation._id}

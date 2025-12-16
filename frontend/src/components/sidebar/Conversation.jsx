@@ -9,11 +9,11 @@ const Conversation = ({conversation, emoji, lastIdx}) => {
 	const isOnline = onlineUsers.includes(conversation._id);
 	return (
 		<>
-			<div className={`flex gap-3 items-center hover:bg-sky-500 hover:bg-opacity-70 rounded-lg p-3 cursor-pointer transition duration-200 ease-in-out
+			<div className={`flex gap-3 items-center hover:bg-sky-500 hover:bg-opacity-70 rounded-lg p-1 cursor-pointer transition duration-200 ease-in-out
 			${isSelected ? "bg-sky-500" : " "} `}
 			onClick={()=>{setSelectedConversation(conversation)}} >
 				<div className='avatar'>
-					<div className={`w-12 rounded-full avatar-${isOnline ? "online" : " "}`}>
+					<div className={`w-12 md:10 rounded-full avatar-${isOnline ? "online" : " "}`}>
 					{/* <div className={`w-12 rounded-full avatar-online`}> */}
 						<img
 							src={conversation.profilePic}
