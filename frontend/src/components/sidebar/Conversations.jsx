@@ -5,7 +5,7 @@ import useGetConversations from "../../hooks/useGetConversation";
 import getEmoji from "../../utils/emojis";
 
 const Conversations = () => {
-	useGetConversations();
+	const {loading} = useGetConversations();
 	const {filteredConversations, conversations} = useContext(conversationContext);
 	const [emojiMap, setEmojiMap] = useState({});
 	useEffect(() => {

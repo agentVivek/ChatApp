@@ -5,7 +5,7 @@ import { useState } from "react";
 const Login = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-	const login = useLogin();
+	const {loading, login} = useLogin();
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		await login(username, password);
@@ -39,7 +39,9 @@ const Login = () => {
 					</Link>
 
 					<div>
-						<button className='btn btn-primary btn-block mt-4'>Login</button>
+						<button className='btn btn-primary btn-block mt-4' disabled={loading}>
+							{loading ? <span className='loading loading-spinner '></span> : "Login"}
+						</button>
 					</div>
 				</form>
 			</div>

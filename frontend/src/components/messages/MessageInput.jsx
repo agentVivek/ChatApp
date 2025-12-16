@@ -1,11 +1,10 @@
-import { BsSend } from "react-icons/bs";
 import { BsFillSendFill } from "react-icons/bs";
-import useSendMessage from "../../hooks/useSendMessage";
+import useSendMessage from "../../hooks/useSendMessage.js";
 import { useState } from "react";
 
 const MessageInput = () => {
   const [message, setMessage] = useState("");
-  const sendMessage = useSendMessage();
+  const { loading, sendMessage } = useSendMessage();
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!message) return;
@@ -28,10 +27,11 @@ const MessageInput = () => {
           }}
         />
         <button
+          disabled={loading}
           type="submit"
           className="absolute inset-y-0 right-3 flex items-center text-green-300 transition-all duration-300 hover:text-green-800 text-2xl md:text-xl active:scale-50"
         >
-          <BsFillSendFill />
+          {loading ? <div className='loading loading-spinner'></div> : <BsFillSendFill />}
         </button>
       </div>
     </form>

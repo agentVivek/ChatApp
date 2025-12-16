@@ -1,14 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import toast from 'react-hot-toast';
 import { authContext } from '../context/authContext';
 
 const useLogin = () => {   
+    const [loading, setLoading] = useState(false);
     const {setAuthUser} = useContext(authContext);
     const login = async (username, password) => {
+        if(loading) return;
         const isValid = handleError(username, password);
         if(!isValid) {
             return;
         }
+        setLoading(true);
         try{
             const res = await fetch("/api/auth/login", {
                 method: "POST",
@@ -25,9 +28,11 @@ const useLogin = () => {
             toast.success("Logged In Successfully") 
         } catch(error){
             toast.error(error.message);
-        }
+        } finally {
+			setLoading(false);
+		}
     }
-    return login;
+    return {loading, login};
 }
 
 export default useLogin;

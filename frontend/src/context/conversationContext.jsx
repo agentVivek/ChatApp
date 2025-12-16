@@ -11,7 +11,7 @@ function ConversationProvider({children}){
     useEffect(() => {
         setFilteredConversations(conversations);
     }, [conversations]);
-    
+     
     return ( 
         <conversationContext.Provider value={{conversations, setConversations, selectedConversation, setSelectedConversation, messages, setMessages, filteredConversations, setFilteredConversations}}>
             {children}

@@ -11,7 +11,7 @@ const SignUp = () => {
     confirmPassword:'',
     gender: '',
   });
-  const signup = useSignUp();
+  const {loading, signup} = useSignUp();
   const handleSumbit = async (e) => {
     e.preventDefault();
     await signup(inputs);
@@ -88,7 +88,15 @@ const SignUp = () => {
           </Link>
 
           <div>
-            <button className="btn btn-primary btn-block mt-4">Sign Up</button>
+            <button 
+                className="btn btn-primary btn-block mt-4" 
+                disabled={loading} >
+                {loading ? (
+                    <span className="loading loading-spinner"></span>
+                ) : (
+                    "Sign Up"
+                )}
+            </button>
           </div>
         </form>
       </div>
