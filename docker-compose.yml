@@ -17,6 +17,8 @@ services:
       - mongo
     env_file:
       - ./backend/.env
+    ports:
+      - "3000:3000"
   frontend:
     build:
       context: ./frontend

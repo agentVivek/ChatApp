@@ -23,7 +23,7 @@ const MessageContainer = () => {
 				/>
 
 				<div className="avatar placeholder px-2">
-					<div className="bg-neutral text-neutral-content rounded-full w-8">
+					<div className="rounded-full w-9">
 						<img src={selectedConversation.profilePic} alt="user avatar" />
 					</div>
 				</div>

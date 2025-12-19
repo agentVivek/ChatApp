@@ -5,6 +5,10 @@ import io from "socket.io-client";
 const socketContext = createContext();
 export {socketContext};
 
+const socketURL = import.meta.env.MODE === "development" 
+    ? "http://localhost:3000" 
+    : "/";
+
 const SocketProvider = ({children}) =>{
     const [socket, setSocket] = useState(null);
     const [onlineUsers, setOnlineUsers] = useState([]);
@@ -12,7 +16,7 @@ const SocketProvider = ({children}) =>{
 
     useEffect(()=>{
         if(authUser){ 
-            const socket = io("http://backend:3000/", {
+            const socket = io(socketURL, {
                 query:{
                     userId: authUser._id
                 }

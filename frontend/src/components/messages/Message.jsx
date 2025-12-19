@@ -15,11 +15,11 @@ const  Message = ({message}) => {
     return (
         <div className={`chat ${chatClassName}`}>
         <div className="chat-image avatar">
-        <div className="w-10 md:w-8 rounded-full"> 
+        {/* <div className="w-10 md:w-8 rounded-full"> 
             <img
             alt="chat bubble component"
             src={profilePic}/>
-        </div>
+        </div> */}
         </div>
         <div className={`chat-bubble ${bgColor} text-xl md:text-xs`}>{message.message}</div>
         <time className="text-xs md:opacity-70 text-cyan-200 ">{formattedTime}</time>
