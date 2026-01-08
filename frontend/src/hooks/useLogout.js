@@ -23,7 +23,7 @@ const useLogout = () => {
             } catch(error){
                 toast.error(error.message);
             } finally{
-                setLoading(true);
+                setLoading(false);
             }
     }
     return {loading, logout}; 
